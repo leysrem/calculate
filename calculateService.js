@@ -1,22 +1,21 @@
 const resultInput = document.querySelector("#result");
 
-function addition(value1, value2) {
+const addition = (value1, value2) => {
     resultInput.value = value1 + value2
 }
-function subtraction(value1, value2) {
+const subtraction = (value1, value2) => {
     resultInput.value = value1 - value2
 }
-function multiplication(value1, value2) {
+const multiplication = (value1, value2) => {
     resultInput.value = value1 * value2
 }
-function division(value1, value2) {
+const division = (value1, value2) => {
     resultInput.value = value1 / value2
 }
 
-function onInit(){
+const onInit = () => {
     // Listen operators on click
     document.querySelectorAll('.operator').forEach(value => {
-
         value.addEventListener('click', e => {
             const value1 = parseInt(document.querySelector("#value1").value);
             const value2 = parseInt(document.querySelector("#value2").value);
