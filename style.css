@@ -1,9 +1,9 @@
-.button, .text {
+button, .text {
     cursor: pointer;
     text-align: center;
 }
 
-.button {
+button {
     background-color: hsla(237deg 74% 33% / 61%);
     border: none;
     color: white;
@@ -11,11 +11,11 @@
     font-size: 20px;
 }
 
-.button:hover {
+button:hover {
     background-color: black;
 }
 
-.text {
+.input {
     border-color: hsla(237deg 74% 33% / 61%);
     color: black;
     padding: 6px 20px;

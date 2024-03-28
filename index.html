@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <header>
-    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </header>
 <body>
-    <div class="calculator">
+    <main>
         <label for="value1"></label>
-        <input type="text" class="text" id="value1" value="" placeholder="Rentrez une première valeur">
+        <input type="number" class="input" id="value1" placeholder="Rentrez une première valeur">
         <label for="value2"></label>
-        <input type="text" class="text" id="value2" value="" placeholder="Rentrez une deuxième valeur">
-        <input type="button" class="button" name="+" id="+" value="+" onclick="Calcul(this.id);" >
-        <input type="button" class="button" name="-" id="-" value="-" onclick="Calcul(this.id);">
-        <input type="button" class="button" name="/" id="/" value="/" onclick="Calcul(this.id);">
-        <input type="button" class="button" name="*" id="*" value="*" onclick="Calcul(this.id);">
-        <div id="result"></div>
-    </div>
+        <input type="number" class="input" id="value2" placeholder="Rentrez une deuxième valeur">
+
+        <button name="+" id="+" class="operator">+</button>
+        <button name="-" id="-" class="operator">-</button>
+        <button name="/" id="/" class="operator">/</button>
+        <button name="*" id="*" class="operator">*</button>
+
+        <label for="result"></label>
+        <input name="result" id="result" type="text" disabled />
+    </main>
 </body>
+<script type="text/javascript" src="calculateService.js"></script>
