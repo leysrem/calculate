@@ -4,18 +4,31 @@
 </header>
 <body>
     <main>
-        <label for="value1"></label>
-        <input type="number" class="input" id="value1" placeholder="Rentrez une première valeur">
-        <label for="value2"></label>
-        <input type="number" class="input" id="value2" placeholder="Rentrez une deuxième valeur">
-
-        <button name="+" id="+" class="operator">+</button>
-        <button name="-" id="-" class="operator">-</button>
-        <button name="/" id="/" class="operator">/</button>
-        <button name="*" id="*" class="operator">*</button>
-
-        <label for="result"></label>
-        <input name="result" id="result" type="text" disabled />
+        <div class="calculate">
+            <h1> CASIO Graph 35+</h1>
+                <div class="values">
+                    <label for="value1"></label>
+                    <input type="number" class="input" id="value1" placeholder="première valeur">
+                    <label for="value2"></label>
+                    <input type="number" class="input" id="value2" placeholder="deuxième valeur">
+                </div>
+                <label for="result"></label>
+                <input name="result" id="result" type="text" class="result" disabled />
+                <div class="operators"> 
+                    <div class="operator-column1">
+                        <button name="+" id="+" class="operator">+</button>
+                        <button name="-" id="-" class="operator">-</button>
+                    </div>
+                    <div class="operator-column2">
+                        <button name="/" id="/" class="operator">/</button>
+                        <button name="*" id="*" class="operator">*</button>
+                    </div>
+                </div>  
+                <div class="result-history">
+                    <button name="history" id="history" class="history" >H+</button>
+                    <button name="*" id="isON" class="isON" >OFF</button>
+                </div> 
+        </div>
     </main>
 </body>
 <script type="text/javascript" src="calculateService.js"></script>

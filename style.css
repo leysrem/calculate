@@ -1,24 +1,104 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0; 
+}
+
+
 button, .text {
     cursor: pointer;
     text-align: center;
 }
 
 button {
-    background-color: hsla(237deg 74% 33% / 61%);
+    background-color: black;
     border: none;
     color: white;
     padding: 5px 20px;
     font-size: 20px;
+    border-radius:5px;
 }
 
 button:hover {
-    background-color: black;
+    background-color: lightgray;
+    color:black;
 }
-
+.operators {
+    width:100%;
+    height: 100%;
+    padding-top:10px;
+    text-align: center;
+}
+.operator {
+    width: 50px; 
+    height: 50px; 
+    line-height: 30px; 
+    text-align: center;
+    justify-content: center;
+}
+.operator-column1 {
+    padding:10px;
+    display:flex inline-block;
+}
+.operators-column2 {
+    display:flex inline-block;
+    justify-content: center;
+    text-align: center;
+}
+.values {
+    text-align: center;
+    display: flex inline-flex;
+}
 .input {
-    border-color: hsla(237deg 74% 33% / 61%);
+    border-color: green;
+    background-color: lightgray;
     color: black;
     padding: 6px 20px;
-    text-decoration: none;
     font-size: 15px;
+    border-radius:5px;
 }
+.input::placeholder {
+    font-size:15px;
+    color: black;
+}
+
+.result-history {
+    padding-top:5px ;
+    text-align: center;
+    display: flex inline-flex;
+    
+}
+
+.result {
+    margin-top: 5px;
+}
+
+ul li {
+    list-style-type : none;
+    font-size:20px;
+}
+
+
+.calculate {
+    background-color: #19cfbe; /* Couleur de fond de la calculatrice */
+    padding: 5px;
+    margin-top:10px;
+    border-radius: 15px;
+    border: 1px solid green;
+    text-align: center;
+}
+
+.calculate h1 {
+    text-align: center;
+}
+
+.calculate .result {
+    text-align: center;
+    justify-content: center;
+    font-size:15px;
+    width:90%;
+    height:100px;
+}
+
