@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<header>
-    <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet"  type="text/css" href="style.css"/>
-    </style>
-</header>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Calculate</title>
+</head>
 <body>
-    <div class="calculator">
-        <input type="text" class="text" id="value1" value="" placeholder="Rentrez une première valeur"> 
-        <input type="text" class="text" id="value2" value="" placeholder="Rentrez une deuxième valeur"> 
-        <input type="button" class="button" name="+" id="+" value="+" onclick="Calcul(this.id);" >
-        <input type="button" class="button" name="-" id="-" value="-" onclick="Calcul(this.id);">
-        <input type="button" class="button" name="/" id="/" value="/" onclick="Calcul(this.id);">
-        <input type="button" class="button" name="*" id="*" value="*" onclick="Calcul(this.id);">
-        <div id="result"></div>
-    </div> 
-
+<main>
+    <div class="calculate">
+        <h1>CASIO Graph 35+</h1>
+        <div class="values">
+            <div>
+                <label for="value1"></label>
+                <input type="number" class="input" id="value1" placeholder="première valeur">
+            </div>
+            <div>
+                <label for="value2"></label>
+                <input type="number" class="input" id="value2" placeholder="deuxième valeur">
+            </div>
+        </div>
+        <label for="screen"></label>
+        <input name="screen" id="screen" type="text" class="screen" disabled/>
+        <div class="buttons-container">
+            <div>
+                <button name="history" id="historyBtn">H+</button>
+                <button name="*" id="powerBtn">Turn ON</button>
+            </div>
+            <div>
+                <button name="+" id="+" class="operator">+</button>
+                <button name="-" id="-" class="operator">-</button>
+            </div>
+            <div>
+                <button name="/" id="/" class="operator">/</button>
+                <button name="*" id="*" class="operator">*</button>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
+<script type="text/javascript" src="main.js"></script>
