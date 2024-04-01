@@ -3,12 +3,14 @@ const historyBtn = document.querySelector("#historyBtn");
 const screen = document.getElementById("screen");
 
 class Calculate {
-    constructor() {
+    constructor(screen) {
+        this.screen = screen
         this.isOn = false
         this.history = []
     }
 
     switchTurnOn() {
+        this.clearScreen()
         this.isOn = !this.isOn
     }
 
@@ -18,7 +20,7 @@ class Calculate {
         }
         const result = value1 + value2;
         this.history.push(value1 + " + " + value2 + " = " + result);
-        return value1 + value2
+        this.screen.textContent = value1 + value2
     }
 
     subtraction(value1, value2) {
@@ -27,7 +29,7 @@ class Calculate {
         }
         const result = value1 - value2;
         this.history.push(value1 + " - " + value2 + " = " + result);
-        return value1 - value2;
+        this.screen.textContent = value1 - value2
 
     }
 
@@ -37,7 +39,7 @@ class Calculate {
         }
         const result = value1 / value2;
         this.history.push(value1 + " / " + value2 + " = " + result);
-        return value1 / value2;
+        this.screen.textContent = value1 / value2
     }
 
     multiplication(value1, value2) {
@@ -46,14 +48,16 @@ class Calculate {
         }
         const result = value1 * value2;
         this.history.push(value1 + " * " + value2 + " = " + result);
-        return value1 * value2;
+        this.screen.textContent = value1 * value2
     }
 
     clearScreen() {
-        screen.value = ''
+        this.screen.textContent = ''
     }
 
     getHistory() {
+        this.clearScreen()
+
         if (!this.isOn) {
             return "Turn ON"
         }
@@ -61,30 +65,30 @@ class Calculate {
             return 'No history'
         }
 
-        let output = '';
-        const reversedHistory = this.history.reverse()
+        const reversedHistory = this.history.slice(0).reverse()
 
         for (let i = 0; i <= Math.min(5, reversedHistory.length) - 1; i++) {
-            output += "| " + reversedHistory[i] + " |";
+            const value = reversedHistory[i]
+            const row = document.createElement('span')
+            row.textContent = value
+            this.screen.append(row)
         }
-        return output;
     }
 }
 
-const calculate = new Calculate();
+const calculate = new Calculate(screen);
 
-powerBtn.addEventListener("click", function () {
+powerBtn.addEventListener("click", () => {
     if (calculate.isOn) {
         powerBtn.textContent = "Turn ON"
     } else {
         powerBtn.textContent = "Turn OFF"
     }
-    calculate.clearScreen()
     calculate.switchTurnOn()
 });
 
-historyBtn.addEventListener("click", e => {
-    screen.value = calculate.getHistory();
+historyBtn.addEventListener("click", () => {
+    calculate.getHistory();
 });
 
 document.querySelectorAll('.operator').forEach(value => {
@@ -95,24 +99,21 @@ document.querySelectorAll('.operator').forEach(value => {
 
         const operator = e.target.name
 
-        let result
-
         switch (operator) {
             case '+':
-                result = calculate.addition(value1, value2)
+                calculate.addition(value1, value2)
                 break
             case '-':
-                result = calculate.subtraction(value1, value2)
+                calculate.subtraction(value1, value2)
                 break
             case '*':
-                result = calculate.multiplication(value1, value2)
+                calculate.multiplication(value1, value2)
                 break
             case '/':
-                result = calculate.division(value1, value2)
+                calculate.division(value1, value2)
                 break
             default:
                 throw Error('Operator not known')
         }
-        screen.value = result;
     })
 })
