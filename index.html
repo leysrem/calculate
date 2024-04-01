@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<header>
+<head>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-</header>
+    <title>Calculate</title>
+</head>
 <body>
-    <main>
-        <div class="calculate">
-            <h1> CASIO Graph 35+</h1>
-                <div class="values">
-                    <label for="value1"></label>
-                    <input type="number" class="input" id="value1" placeholder="première valeur">
-                    <label for="value2"></label>
-                    <input type="number" class="input" id="value2" placeholder="deuxième valeur">
-                </div>
-                <label for="result"></label> 
-                <input name="result" id="result" type="text" class="result" disabled />
-                <div class="result-history">
-                    <button name="history" id="history" class="history" >H+</button>
-                    <button name="*" id="isON" class="isON" >OFF</button>
-                </div> 
-                <div class="operators"> 
-                    <div class="operator-column1">
-                        <button name="+" id="+" class="operator">+</button>
-                        <button name="-" id="-" class="operator">-</button>
-                    </div>
-                    <div class="operator-column2">
-                        <button name="/" id="/" class="operator">/</button>
-                        <button name="*" id="*" class="operator">*</button>
-                    </div>
-                </div>  
+<main>
+    <div class="calculate">
+        <h1>CASIO Graph 35+</h1>
+        <div class="values">
+            <div>
+                <label for="value1"></label>
+                <input type="number" class="input" id="value1" placeholder="première valeur">
+            </div>
+            <div>
+                <label for="value2"></label>
+                <input type="number" class="input" id="value2" placeholder="deuxième valeur">
+            </div>
         </div>
-    </main>
+        <label for="screen"></label>
+        <input name="screen" id="screen" type="text" class="screen" disabled/>
+        <div class="buttons-container">
+            <div>
+                <button name="history" id="historyBtn">H+</button>
+                <button name="*" id="powerBtn">Turn ON</button>
+            </div>
+            <div>
+                <button name="+" id="+" class="operator">+</button>
+                <button name="-" id="-" class="operator">-</button>
+            </div>
+            <div>
+                <button name="/" id="/" class="operator">/</button>
+                <button name="*" id="*" class="operator">*</button>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
-<script type="text/javascript" src="calculateService.js"></script>
+<script type="text/javascript" src="main.js"></script>
