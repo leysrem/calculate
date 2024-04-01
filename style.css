@@ -52,13 +52,14 @@ button:hover {
     display: flex inline-flex;
 }
 .input {
-    border-color: green;
-    background-color: lightgray;
+    border:green solid 1px;
+    background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
     color: black;
     padding: 6px 20px;
     font-size: 15px;
     border-radius:5px;
 }
+
 .input::placeholder {
     font-size:15px;
     color: black;
@@ -66,9 +67,6 @@ button:hover {
 
 .result-history {
     padding-top:5px ;
-    text-align: center;
-    display: flex inline-flex;
-    
 }
 
 .result {
@@ -82,7 +80,7 @@ ul li {
 
 
 .calculate {
-    background-color: #19cfbe; /* Couleur de fond de la calculatrice */
+    background-color: #9FD29F;
     padding: 5px;
     margin-top:10px;
     border-radius: 15px;
