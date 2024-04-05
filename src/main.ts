@@ -1,127 +1,135 @@
-const powerBtn: HTMLButtonElement = document.querySelector("#powerBtn")!;
-const historyBtn: HTMLButtonElement = document.querySelector("#historyBtn")!;
-const getScreen: HTMLButtonElement  = document.querySelector("#screen")!;
+const powerBtn: HTMLButtonElement = document.querySelector("#powerBtn")
+const historyBtn: HTMLButtonElement = document.querySelector("#historyBtn")
+const getScreen: HTMLDivElement  = document.querySelector("#screen")
 
-class Calculate {
-    getScreen: HTMLElement;
-    isOn: boolean;
-    history: Array<string>;
+class Calculate
+{
+    getScreen: HTMLDivElement
+    isOn: boolean
+    history: string[]
 
-    constructor(getScreen: HTMLElement) {
-        this.getScreen = getScreen;
-        this.isOn = false;
-        this.history = [];
+    constructor(getScreen: HTMLDivElement)
+    {
+        this.getScreen = getScreen
+        this.isOn = false
+        this.history = []
     }
 
-    switchTurnOn(): void {
-        this.clearScreen();
-        this.isOn = !this.isOn;
+    switchTurnOn(): boolean
+    {
+        this.clearScreen()
+        return this.isOn = !this.isOn
     }
 
-    addition(value1: number, value2: number): void | string {
+    addition(value1: number, value2: number): string
+    {
         if (!this.isOn) {
-            return "Turn ON";
+            return "Turn ON"
         }
-        const result: number = value1 + value2;
-        this.history.push(value1 + " + " + value2 + " = " + result);
-        this.getScreen.textContent = String(result);
+        const result: number = value1 + value2
+        this.history.push(value1 + " + " + value2 + " = " + result)
+        return this.getScreen.textContent = result.toString()
     }
 
-    subtraction(value1: number, value2: number): void | string {
+    subtraction(value1: number, value2: number): string
+    {
         if (!this.isOn) {
-            return "Turn ON";
+            return "Turn ON"
         }
-        const result: number = value1 - value2;
-        this.history.push(value1 + " - " + value2 + " = " + result);
-        this.getScreen.textContent = String(result);
+        const result: number = value1 - value2
+        this.history.push(value1 + " - " + value2 + " = " + result)
+        return this.getScreen.textContent = result.toString()
     }
 
-    division(value1: number, value2: number): void | string {
+    division(value1: number, value2: number): string
+    {
         if (!this.isOn) {
-            return "Turn ON";
+            return "Turn ON"
         }
         if (value2 === 0) {
-            return "Division by zero";
+            return "Division by zero"
         }
-        const result: number = value1 / value2;
-        this.history.push(value1 + " / " + value2 + " = " + result);
-        this.getScreen.textContent = String(result);
+        const result: number = value1 / value2
+        this.history.push(value1 + " / " + value2 + " = " + result)
+        return this.getScreen.textContent = result.toString()
     }
 
-    multiplication(value1: number, value2: number): void | string {
+    multiplication(value1: number, value2: number): string
+    {
         if (!this.isOn) {
-            return "Turn ON";
+            return "Turn ON"
         }
-        const result: number = value1 * value2;
-        this.history.push(value1 + " * " + value2 + " = " + result);
-        this.getScreen.textContent = String(result);
+        const result: number = value1 * value2
+        this.history.push(value1 + " * " + value2 + " = " + result)
+        this.getScreen.textContent = result.toString()
     }
 
-    clearScreen(): void {
-        this.getScreen.textContent = '';
+    clearScreen(): void
+    {
+        this.getScreen.textContent = ''
     }
 
-    getHistory(): void | string {
-        this.clearScreen();
+    getHistory(): void | string
+    {
+        this.clearScreen()
 
         if (!this.isOn) {
-            return "Turn ON";
+            return "Turn ON"
         }
         if (!this.history.length) {
-            return 'No history';
+            return 'No history'
         }
 
-        const reversedHistory: string[] = this.history.slice(0).reverse();
+        const reversedHistory: string[] = this.history.slice(0).reverse()
 
         for (let i: number = 0; i <= Math.min(5, reversedHistory.length) - 1; i++) {
-            const value: string = reversedHistory[i];
-            const row: HTMLSpanElement = document.createElement('span');
-            row.textContent = value;
-            this.getScreen.append(row);
+            const value: string = reversedHistory[i]
+            const row: HTMLSpanElement = document.createElement('span')
+            row.textContent = value
+            this.getScreen.append(row)
         }
     }
 }
 
 
-    const calculate: Calculate = new Calculate(getScreen);
+const calculate: Calculate = new Calculate(getScreen)
 
-    powerBtn.addEventListener("click", () => {
-        if (calculate.isOn) {
-            powerBtn.textContent = "Turn ON";
-        } else {
-            powerBtn.textContent = "Turn OFF";
+powerBtn.addEventListener("click", (): void => {
+    if (calculate.isOn) {
+        powerBtn.textContent = "Turn ON"
+    } else {
+        powerBtn.textContent = "Turn OFF"
+    }
+    calculate.switchTurnOn()
+})
+
+historyBtn.addEventListener("click", (): void => {
+    calculate.getHistory()
+})
+
+document.querySelectorAll('.operator').forEach((value: Element): void => {
+    value.addEventListener('click', (e: Event): void => {
+        const value1: number = parseInt((<HTMLInputElement>document.querySelector("#value1")).value)
+        const value2: number = parseInt((<HTMLInputElement>document.querySelector("#value2")).value)
+
+        const operator: string = (e.target as HTMLButtonElement).name
+
+        switch (operator) {
+            case '+':
+                calculate.addition(value1, value2)
+                break
+            case '-':
+                calculate.subtraction(value1, value2)
+                break
+            case '*':
+                calculate.multiplication(value1, value2)
+                break
+            case '/':
+                calculate.division(value1, value2)
+                break
+            default:
+                console.log('Operator not known')
+                break
         }
-        calculate.switchTurnOn();
-    });
-
-    historyBtn.addEventListener("click", () => {
-        calculate.getHistory();
-    });
-
-    document.querySelectorAll('.operator').forEach((value: any) => {
-        value.addEventListener('click', (e: Event) => {
-            const value1: number = parseInt((document.querySelector("#value1") as HTMLInputElement).value);
-            const value2: number = parseInt((document.querySelector("#value2") as HTMLInputElement).value);
-
-            const operator: string = (e.target as HTMLButtonElement).name;
-
-            switch (operator) {
-                case '+':
-                    calculate.addition(value1, value2);
-                    break;
-                case '-':
-                    calculate.subtraction(value1, value2);
-                    break;
-                case '*':
-                    calculate.multiplication(value1, value2);
-                    break;
-                case '/':
-                    calculate.division(value1, value2);
-                    break;
-                default:
-                    console.log('Operator not known');
-                    break;
-            }
-        });
-    });
-
+    })
+})
