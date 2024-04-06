@@ -1,38 +1,40 @@
 <!DOCTYPE html>
+
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <title>Calculate</title>
 </head>
+
 <body>
-<main>
-    <div class="calculate">
-        <h1>CASIO Graph 35+</h1>
-        <div class="values">
-            <div>
-                <label for="value1"></label>
-                <input type="number" class="input" id="value1" placeholder="première valeur">
+    <main>
+        <div class="calculate">
+            <h1>CASIO Graph 35+</h1>
+            <div class="values">
+                <div>
+                    <label for="value1"></label>
+                    <input type="number" class="input" id="value1" placeholder="première valeur">
+                </div>
+                <div>
+                    <label for="value2"></label>
+                    <input type="number" class="input" id="value2" placeholder="deuxième valeur">
+                </div>
             </div>
-            <div>
-                <label for="value2"></label>
-                <input type="number" class="input" id="value2" placeholder="deuxième valeur">
+            <div id="screen"></div>
+            <div class="buttons-container">
+                <div>
+                    <button name="history" id="historyBtn">H+</button>
+                    <button name="*" id="powerBtn">Turn ON</button>
+                </div>
+                <div>
+                    <button name="+" id="+" class="operator">+</button>
+                    <button name="-" id="-" class="operator">-</button>
+                </div>
+                <div> 
+                    <button name="/" id="/" class="operator">/</button>
+                    <button name="*" id="*" class="operator">*</button>
+                </div>
             </div>
         </div>
-        <div id="screen"></div>
-        <div class="buttons-container">
-            <div>
-                <button name="history" id="historyBtn">H+</button>
-                <button name="*" id="powerBtn">Turn ON</button>
-            </div>
-            <div>
-                <button name="+" id="+" class="operator">+</button>
-                <button name="-" id="-" class="operator">-</button>
-            </div>
-            <div>
-                <button name="/" id="/" class="operator">/</button>
-                <button name="*" id="*" class="operator">*</button>
-            </div>
-        </div>
-    </div>
-</main>
+    </main>
+    <script type="text/javascript" src="src/main.js"></script>
 </body>
-<script type="text/javascript" src="main.js"></script>
