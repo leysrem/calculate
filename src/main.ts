@@ -1,76 +1,89 @@
 const powerBtn: HTMLButtonElement = document.querySelector("#powerBtn")
 const historyBtn: HTMLButtonElement = document.querySelector("#historyBtn")
-const getScreen: HTMLDivElement  = document.querySelector("#screen")
+const getScreen: HTMLDivElement = document.querySelector("#screen")
 
-class Calculate
-{
+class Calculate {
     getScreen: HTMLDivElement
     isOn: boolean
     history: string[]
 
-    constructor(getScreen: HTMLDivElement)
-    {
+    constructor(getScreen: HTMLDivElement) {
         this.getScreen = getScreen
         this.isOn = false
         this.history = []
     }
 
-    switchTurnOn(): boolean
-    {
+    calculDelay(): Promise<true> {
+        return new Promise(function(resolve) {
+            setTimeout((): void => {
+                resolve(true)
+            }, 2000)
+        }) 
+    }
+
+    switchTurnOn(): boolean {
         this.clearScreen()
         return this.isOn = !this.isOn
     }
 
-    addition(value1: number, value2: number): string
-    {
+    addition(value1: number, value2: number): void {
         if (!this.isOn) {
-            return "Turn ON"
+            this.getScreen.textContent = "Turn ON"
         }
-        const result: number = value1 + value2
-        this.history.push(value1 + " + " + value2 + " = " + result)
-        return this.getScreen.textContent = result.toString()
+        this.getScreen.textContent = "Loading..."
+
+        this.calculDelay().then(resolve => { 
+            const result: number = value1 + value2
+            this.history.push(value1 + " + " + value2 + " = " + result)
+            this.getScreen.textContent = result.toString()
+        })       
     }
 
-    subtraction(value1: number, value2: number): string
-    {
+    subtraction(value1: number, value2: number): void {
         if (!this.isOn) {
-            return "Turn ON"
+            this.getScreen.textContent = "Turn ON"
         }
-        const result: number = value1 - value2
-        this.history.push(value1 + " - " + value2 + " = " + result)
-        return this.getScreen.textContent = result.toString()
+        this.getScreen.textContent = "Loading..."
+
+        this.calculDelay().then(resolve => { 
+            const result: number = value1 - value2
+            this.history.push(value1 + " - " + value2 + " = " + result)
+            this.getScreen.textContent = result.toString()
+        }) 
     }
 
-    division(value1: number, value2: number): string
-    {
+    division(value1: number, value2: number): void {
         if (!this.isOn) {
-            return "Turn ON"
+            this.getScreen.textContent = "Turn ON"
         }
-        if (value2 === 0) {
-            return "Division by zero"
-        }
-        const result: number = value1 / value2
-        this.history.push(value1 + " / " + value2 + " = " + result)
-        return this.getScreen.textContent = result.toString()
+        this.getScreen.textContent = "Loading..."
+
+        this.calculDelay().then(resolve => { 
+            const result: number = value1 / value2
+            this.history.push(value1 + " / " + value2 + " = " + result)
+            this.getScreen.textContent = result.toString()
+        })
     }
 
-    multiplication(value1: number, value2: number): string
-    {
+    multiplication(value1: number, value2: number): void {
         if (!this.isOn) {
-            return "Turn ON"
+            this.getScreen.textContent = "Turn ON"
         }
-        const result: number = value1 * value2
-        this.history.push(value1 + " * " + value2 + " = " + result)
-        this.getScreen.textContent = result.toString()
+        this.getScreen.textContent = "Loading..."
+
+        this.calculDelay().then(resolve => { 
+            const result: number = value1 * value2
+            this.history.push(value1 + " * " + value2 + " = " + result)
+            this.getScreen.textContent = result.toString()
+        }) 
+
     }
 
-    clearScreen(): void
-    {
+    clearScreen(): void {
         this.getScreen.textContent = ''
     }
 
-    getHistory(): void | string
-    {
+    getHistory(): void | string {
         this.clearScreen()
 
         if (!this.isOn) {
@@ -90,7 +103,6 @@ class Calculate
         }
     }
 }
-
 
 const calculate: Calculate = new Calculate(getScreen)
 
