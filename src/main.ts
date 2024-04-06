@@ -14,6 +14,7 @@ class Calculate {
     }
 
     calculDelay(): Promise<true> {
+        //@ts-ignore
         return new Promise(function(resolve) {
             setTimeout((): void => {
                 resolve(true)
