@@ -24,48 +24,56 @@ var Calculate = /** @class */ (function () {
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON";
         }
-        this.getScreen.textContent = "Loading...";
-        this.calculDelay().then(function (resolve) {
-            var result = value1 + value2;
-            _this.history.push(value1 + " + " + value2 + " = " + result);
-            _this.getScreen.textContent = result.toString();
-        });
+        else {
+            this.getScreen.textContent = "Loading...";
+            this.calculDelay().then(function (resolve) {
+                var result = value1 + value2;
+                _this.history.push(value1 + " + " + value2 + " = " + result);
+                _this.getScreen.textContent = result.toString();
+            });
+        }
     };
     Calculate.prototype.subtraction = function (value1, value2) {
         var _this = this;
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON";
         }
-        this.getScreen.textContent = "Loading...";
-        this.calculDelay().then(function (resolve) {
-            var result = value1 - value2;
-            _this.history.push(value1 + " - " + value2 + " = " + result);
-            _this.getScreen.textContent = result.toString();
-        });
+        else {
+            this.getScreen.textContent = "Loading...";
+            this.calculDelay().then(function (resolve) {
+                var result = value1 - value2;
+                _this.history.push(value1 + " - " + value2 + " = " + result);
+                _this.getScreen.textContent = result.toString();
+            });
+        }
     };
     Calculate.prototype.division = function (value1, value2) {
         var _this = this;
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON";
         }
-        this.getScreen.textContent = "Loading...";
-        this.calculDelay().then(function (resolve) {
-            var result = value1 / value2;
-            _this.history.push(value1 + " / " + value2 + " = " + result);
-            _this.getScreen.textContent = result.toString();
-        });
+        else {
+            this.getScreen.textContent = "Loading...";
+            this.calculDelay().then(function (resolve) {
+                var result = value1 / value2;
+                _this.history.push(value1 + " / " + value2 + " = " + result);
+                _this.getScreen.textContent = result.toString();
+            });
+        }
     };
     Calculate.prototype.multiplication = function (value1, value2) {
         var _this = this;
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON";
         }
-        this.getScreen.textContent = "Loading...";
-        this.calculDelay().then(function (resolve) {
-            var result = value1 * value2;
-            _this.history.push(value1 + " * " + value2 + " = " + result);
-            _this.getScreen.textContent = result.toString();
-        });
+        else {
+            this.getScreen.textContent = "Loading...";
+            this.calculDelay().then(function (resolve) {
+                var result = value1 * value2;
+                _this.history.push(value1 + " * " + value2 + " = " + result);
+                _this.getScreen.textContent = result.toString();
+            });
+        }
     };
     Calculate.prototype.clearScreen = function () {
         this.getScreen.textContent = '';

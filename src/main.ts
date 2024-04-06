@@ -15,11 +15,11 @@ class Calculate {
 
     calculDelay(): Promise<true> {
         //@ts-ignore
-        return new Promise(function(resolve) {
+        return new Promise(function (resolve) {
             setTimeout((): void => {
                 resolve(true)
             }, 2000)
-        }) 
+        })
     }
 
     switchTurnOn(): boolean {
@@ -31,53 +31,61 @@ class Calculate {
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON"
         }
-        this.getScreen.textContent = "Loading..."
-
-        this.calculDelay().then(resolve => { 
-            const result: number = value1 + value2
-            this.history.push(value1 + " + " + value2 + " = " + result)
-            this.getScreen.textContent = result.toString()
-        })       
+        else {
+            this.getScreen.textContent = "Loading..."
+            this.calculDelay().then(resolve => {
+                const result: number = value1 + value2
+                this.history.push(value1 + " + " + value2 + " = " + result)
+                this.getScreen.textContent = result.toString()
+            })
+        }
     }
 
     subtraction(value1: number, value2: number): void {
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON"
         }
-        this.getScreen.textContent = "Loading..."
+        else {
 
-        this.calculDelay().then(resolve => { 
-            const result: number = value1 - value2
-            this.history.push(value1 + " - " + value2 + " = " + result)
-            this.getScreen.textContent = result.toString()
-        }) 
+
+            this.getScreen.textContent = "Loading..."
+            this.calculDelay().then(resolve => {
+                const result: number = value1 - value2
+                this.history.push(value1 + " - " + value2 + " = " + result)
+                this.getScreen.textContent = result.toString()
+            })
+        }
     }
 
     division(value1: number, value2: number): void {
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON"
         }
-        this.getScreen.textContent = "Loading..."
+        else {
 
-        this.calculDelay().then(resolve => { 
-            const result: number = value1 / value2
-            this.history.push(value1 + " / " + value2 + " = " + result)
-            this.getScreen.textContent = result.toString()
-        })
+            this.getScreen.textContent = "Loading..."
+            this.calculDelay().then(resolve => {
+                const result: number = value1 / value2
+                this.history.push(value1 + " / " + value2 + " = " + result)
+                this.getScreen.textContent = result.toString()
+            })
+        }
     }
 
     multiplication(value1: number, value2: number): void {
         if (!this.isOn) {
             this.getScreen.textContent = "Turn ON"
         }
-        this.getScreen.textContent = "Loading..."
+        else {
 
-        this.calculDelay().then(resolve => { 
-            const result: number = value1 * value2
-            this.history.push(value1 + " * " + value2 + " = " + result)
-            this.getScreen.textContent = result.toString()
-        }) 
 
+            this.getScreen.textContent = "Loading..."
+            this.calculDelay().then(resolve => {
+                const result: number = value1 * value2
+                this.history.push(value1 + " * " + value2 + " = " + result)
+                this.getScreen.textContent = result.toString()
+            })
+        }
     }
 
     clearScreen(): void {
